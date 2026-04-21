@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { UsersController } from "./users.controller";
 import { usersRoutes } from "./users.routes";
+import { env } from "config/env.ts";
 
 import { createUser } from "./application/use-cases/create-user.use-case";
 import { deleteUser } from "./application/use-cases/delete-user.use-case";
@@ -17,9 +18,18 @@ import { getUserByEmail } from "./application/use-cases/get-user-by-email.user-c
 
 type UsersDbShape = { users: UserRecord[] };
 
+function resolveJsonDatabasePath(databaseUrl: string): string {
+  if (databaseUrl.startsWith("file:")) {
+    return databaseUrl.slice("file:".length);
+  }
+
+  return databaseUrl;
+}
+
 export function buildUsersModule(): Router {
   // 1️⃣ Infraestructura concreta (JSON temporal)
-  const db = createJsonDbClient<UsersDbShape>("data/users.json", {
+  const dbPath = resolveJsonDatabasePath(env.DATABASE_URL);
+  const db = createJsonDbClient<UsersDbShape>(dbPath, {
     initialData: { users: [] },
   });
 

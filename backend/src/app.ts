@@ -14,6 +14,8 @@ export function buildApp() {
   app.use(requestIdMiddleware);
 
   // base endpoints
+  app.get("/", (_req, res) => res.redirect("/v1/users"));
+
   app.get("/health", (_req, res) =>
     res.status(HttpStatus.OK).json({ ok: true }),
   );

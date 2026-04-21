@@ -6,6 +6,20 @@
       "name": "John Doe",
       "createdAt": "2026-01-21T16:27:56.654Z",
       "updatedAt": "2026-01-21T16:33:58.784Z"
+    },
+    {
+      "id": "e3",
+      "email": "test2@test.com",
+      "name": "Juan Tin",
+      "createdAt": "2024-06-21T16:27:56.654Z",
+      "updatedAt": "2026-01-21T16:33:58.784Z"
+    },
+    {
+      "id": "1",
+      "email": "test3@test.com",
+      "name": "Jhonny Melavo",
+      "createdAt": "2025-01-21T16:27:56.654Z",
+      "updatedAt": "2026-01-21T16:33:58.784Z"
     }
   ]
 }
