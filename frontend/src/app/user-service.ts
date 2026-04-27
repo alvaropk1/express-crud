@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { User } from './user';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 export class UserService {
   httpClient = inject(HttpClient);
   private apiUrl = 'http://localhost:8080/v1/users';
+
+  selectedUser = signal<User | null>(null);
 
   getAllUsers(): Observable<User[]>{
     return this.httpClient.get<User[]>(this.apiUrl);
