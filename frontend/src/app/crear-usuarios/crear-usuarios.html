@@ -1,0 +1,36 @@
+<div class="container">
+    <h1>Crear Usuario</h1>
+
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="form-card">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" formControlName="email" placeholder="ejemplo@email.com">
+            </div>
+
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" formControlName="name" placeholder="Juan Pérez">
+            </div>
+
+            <div class="form-group">
+                <button type="submit">
+                    {{ modo === 'create' ? 'Crear' : 'Guardar' }}
+                </button>
+            </div>
+        </div>
+        <div class="errores">
+            @if (userForm.controls.email.touched && userForm.controls.email.invalid) {
+                <div class="error">
+                    <small>Formato de email inválido</small>
+                </div>
+                }
+
+            @if (userForm.controls.name.touched && userForm.controls.name.invalid) {
+                <div class="error">
+                    <small>El nombre es obligatorio</small>
+                </div>
+            }
+        </div>  
+    </form>
+</div>

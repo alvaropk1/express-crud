@@ -27,8 +27,8 @@
                     <td>{{u.createdAt | date: 'M/d/yy, h:mm'}}</td>
                     <td>{{u.updatedAt | date: 'M/d/yy, h:mm'}}</td>
                     <td>
-                        <button>Editar</button>
-                        <button>Eliminar</button>
+                        <button (click)="editUser(u)">Editar</button>
+                        <button (click)="deleteUser(u.id)">Eliminar</button>
                     </td>
                 </tr>
             }

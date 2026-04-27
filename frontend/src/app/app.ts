@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { ListarUsuarios } from './listar-usuarios/listar-usuarios';
+import { CrearUsuarios } from './crear-usuarios/crear-usuarios';
 
 @Component({
   selector: 'app-root',
-  imports: [ListarUsuarios],
+  imports: [ListarUsuarios, CrearUsuarios],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
