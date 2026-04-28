@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { ListarUsuarios } from './listar-usuarios/listar-usuarios';
-import { CrearUsuarios } from './crear-usuarios/crear-usuarios';
+import { ListarUsuarios } from './users/listar-usuarios/listar-usuarios';
+import { CrearUsuarios } from './users/crear-usuarios/crear-usuarios';
 
 @Component({
   selector: 'app-root',

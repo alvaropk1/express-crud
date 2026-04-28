@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { ReactiveFormsModule, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { UserService } from '../user-service';
-import { User } from '../user';
+import { UserService } from '../../user-service';
+import { User } from '../../user';
 
 @Component({
   selector: 'app-crear-usuarios',

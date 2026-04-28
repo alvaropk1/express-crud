@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
-import { UserService } from '../user-service';
+import { UserService } from '../../user-service';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { User } from '../user';
+import { User } from '../../user';
 import { DatePipe } from '@angular/common';
 import { switchMap } from 'rxjs';
 
