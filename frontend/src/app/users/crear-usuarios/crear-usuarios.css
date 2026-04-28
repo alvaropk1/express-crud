@@ -46,7 +46,8 @@ input:focus {
 
 /* Botón (mismo estilo base que ya tienes) */
 button {
-    width: 100%;
+  margin-top: 2%;
+  width: 100%;
   padding: 10px 14px;
   border: none;
   border-radius: 8px;
@@ -57,9 +58,22 @@ button {
   transition: background 0.2s ease;
 }
 
+.cancel{
+  background: #ff5252;
+}
+
+.cancel:hover {
+  background: #961305;
+}
+
 button:hover {
   background: #059669;
 }
+
+.cancel:hover {
+  background: #960505;
+}
+
 
 button:disabled {
   background: #9ca3af;

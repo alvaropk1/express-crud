@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
-import { UserService } from '../../user-service';
+import { UserService } from '../shared/user-service';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { User } from '../../user';
+import { User } from '../shared/user';
 import { DatePipe } from '@angular/common';
 import { switchMap } from 'rxjs';
 
@@ -14,23 +14,22 @@ import { switchMap } from 'rxjs';
 export class ListarUsuarios {
   userService = inject(UserService);
 
-  refresh = signal(0);
   usuarios = toSignal(
-    toObservable(this.refresh).pipe(
+    toObservable(this.userService.refreshUsers).pipe(
       switchMap(() => this.userService.getAllUsers())
     ), 
-    {initialValue: [] as User[]}
+    {initialValue: []}
   );
 
   editUser(user: User) {
-    this.userService.selectedUser.set(user);
+    this.userService.selectedUser.set({ ...user });
   }
 
   deleteUser(id: string) {
     this.userService.deleteUser(id).subscribe({
       next: () => {
         console.log("Borrado terminado");
-        this.refresh.update((v) => v + 1);
+        this.userService.refreshUsers.update((v) => v + 1);
       }
     });
   }

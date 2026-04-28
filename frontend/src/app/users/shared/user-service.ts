@@ -11,6 +11,7 @@ export class UserService {
   private apiUrl = 'http://localhost:8080/v1/users';
 
   selectedUser = signal<User | null>(null);
+  refreshUsers = signal(0);
 
   getAllUsers(): Observable<User[]>{
     return this.httpClient.get<User[]>(this.apiUrl);

@@ -1,7 +1,7 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { ReactiveFormsModule, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { UserService } from '../../user-service';
-import { User } from '../../user';
+import { UserService } from '../shared/user-service';
+import { User } from '../shared/user';
 
 @Component({
   selector: 'app-crear-usuarios',
@@ -12,6 +12,22 @@ import { User } from '../../user';
 export class CrearUsuarios {
   private fb = inject(FormBuilder);
   private userService = inject(UserService);
+  
+  constructor() {
+  effect(() => {
+    const user = this.userService.selectedUser();
+
+    if (user) {
+      this.modo = 'edit';
+      this.editingUserId = user.id;
+
+      this.userForm.setValue({
+        email: user.email ?? '',
+        name: user.name
+      });
+    }
+  });
+}
 
   userForm = this.fb.group({
     email: new FormControl<string>('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
@@ -34,6 +50,7 @@ export class CrearUsuarios {
         next: () => {
           console.log("Creación terminada");
           this.resetForm();
+          this.userService.refreshUsers.update(v => v + 1);
         },
         error: (err) => console.error('No se pudo crear el usuario', err),
       });
@@ -42,21 +59,12 @@ export class CrearUsuarios {
       next: () => {
         console.log("Actualización terminada");
         this.resetForm();
+        this.userService.refreshUsers.update(v => v + 1);
       },
       error: (err) => console.error('No se pudo actualizar el usuario', err),
     });
   }
 }
-
-  editUser(user: User) {
-    this.modo = 'edit';
-    this.editingUserId = user.id;
-
-    this.userForm.setValue({
-      email: user.email ?? '',
-      name: user.name
-    });
-  }
 
   cancelEdit() {
     this.resetForm();
@@ -66,5 +74,6 @@ export class CrearUsuarios {
     this.userForm.reset({ email: '', name: '' });
     this.modo = 'create';
     this.editingUserId = null;
+    this.userService.selectedUser.set(null);
   }
 }

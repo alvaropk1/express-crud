@@ -17,6 +17,11 @@
                 <button type="submit">
                     {{ modo === 'create' ? 'Crear' : 'Guardar' }}
                 </button>
+                @if (modo === 'edit') {
+                    <button class="cancel" type="button" (click)="cancelEdit()">
+                        Cancelar
+                    </button>
+                }
             </div>
         </div>
         <div class="errores">

@@ -22,18 +22,11 @@
       "updatedAt": "2026-01-21T16:33:58.784Z"
     },
     {
-      "id": "2",
-      "email": "test3@test.com",
-      "name": "Jhonny Melavo",
-      "createdAt": "2025-01-21T16:27:56.654Z",
-      "updatedAt": "2026-01-21T16:33:58.784Z"
-    },
-    {
-      "id": "bbb0ab5f-d909-46ff-af63-8df3f2d5a492",
-      "email": "manolito@email.com",
-      "name": "Mano Lito",
-      "createdAt": "2026-04-27T10:09:14.405Z",
-      "updatedAt": "2026-04-27T10:09:14.405Z"
+      "id": "03e492af-31da-4249-8148-ba90d0e30738",
+      "email": "man@child.com",
+      "name": "Sabrina Carpenter",
+      "createdAt": "2026-04-28T09:54:22.919Z",
+      "updatedAt": "2026-04-28T09:54:22.919Z"
     }
   ]
 }
